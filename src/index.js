@@ -7,6 +7,8 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
+  query,
+  where
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -72,9 +74,11 @@ deleteBookForm.addEventListener('submit', (e) => {
 
 })
 
+//Queries
+const q = query(colRef, where('author', '==', 'Harry'))
 
 // Real time database
-onSnapshot(colRef,(snap) => {
+onSnapshot(q,(snap) => {
   let books = [];
   snap.docs.forEach((doc) => {
     books.push({...doc.data(), id: doc.id })

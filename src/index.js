@@ -6,6 +6,7 @@ import {
   addDoc,
   deleteDoc,
   doc,
+  onSnapshot,
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -40,6 +41,8 @@ getDocs(colRef)
     })
 
   
+
+  
 // adding documents
 const addBookForm = document.querySelector('.add')
 addBookForm.addEventListener('submit', (e) => {
@@ -69,3 +72,13 @@ deleteBookForm.addEventListener('submit', (e) => {
 
 })
 
+
+// Real time database
+onSnapshot(colRef,(snap) => {
+  let books = [];
+  snap.docs.forEach((doc) => {
+    books.push({...doc.data(), id: doc.id })
+    
+  })
+  console.log(books)
+})

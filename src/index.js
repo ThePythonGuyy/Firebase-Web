@@ -19,6 +19,7 @@ import {
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
@@ -89,7 +90,7 @@ const q = query(
 );
 
 // Real time database
-onSnapshot(q, (snap) => {
+const subDb = onSnapshot(q, (snap) => {
   let books = [];
   snap.docs.forEach((doc) => {
     books.push({ ...doc.data(), id: doc.id });
@@ -204,4 +205,19 @@ logoutButton.addEventListener('click', (e) => {
       console.log(err.message)
     })
 
+})
+
+
+// subscribing to auth changes
+const subAuth = onAuthStateChanged(auth, (user) => {
+  // alert('hello')
+  console.log('user status changed: ', user)
+})
+
+//unsubscribing rom changes (auth & db)
+const unsubButton = document.querySelector('.unsub')
+unsubButton.addEventListener('click', () => {
+  console.log('unsubscribe')
+  subAuth()
+  subDb()
 })

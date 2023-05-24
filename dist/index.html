@@ -9,20 +9,57 @@
   <body>
     <h1>Setting up firebase</h1>
     <form class="add">
-        <label for="title">Title</label>
-        <input type="text" name="title" required>
-        <label for="author">Author:</label>
-        <input type="text" name="author" required>
+      <label for="title">Title</label>
+      <input type="text" name="title" required />
+      <label for="author">Author:</label>
+      <input type="text" name="author" required />
 
-        <button>add book</button>
+      <button>add book</button>
     </form>
-
+    <br />
+    <br />
     <form class="delete">
-        <label for="id">Document id:</label>
-        <input type="text" name="id" required>
+      <label for="id">Document id:</label>
+      <input type="text" name="id" required />
 
-        <button>delete book</button>
+      <button>delete book</button>
     </form>
+    <br />
+    <br />
+    <form class="update">
+      <label for="id">Document id : </label>
+      <input type="text" name="id" required />
+      <label for="title">Title : </label>
+      <input type="text" name="title" />
+      <label for="author">Author : </label>
+      <input type="text" name="author" />
+      <button>Update Doc</button>
+    </form>
+
+    <button id="fetch">Fetch Document</button>
+
+    <h2>Firebase Auth</h2>
+    <form class="signup">
+        <label for="email">email : </label>
+        <input type="email" name="email">
+        <label for="password">password : </label>
+        <input type="password" name="password">
+        <button>signup</button>
+    </form>
+
+    <br>
+
+    <form class="login">
+      <label for="email">email : </label>
+      <input type="email" name="email">
+      <label for="password">password : </label>
+      <input type="password" name="password">
+      <button>login</button>
+  </form>
+  <br>
+
+  <button class="logout">logout</button>
+
     <script src="bundle.js"></script>
   </body>
 </html>
